@@ -211,6 +211,49 @@ export function About() {
             })}
           </div>
         </div>
+        <>
+          <h2 className="text-3xl font-bold text-center mb-12">My Journey</h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              <div className="absolute left-8 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
+              {timeline.map((item, index) => (
+                <div
+                  key={index}
+                  className={`relative flex items-center mb-8 ${
+                    index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                  }`}
+                >
+                  {/* Timeline marker */}
+                  <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
+
+                  {/* Content */}
+                  <div
+                    className={`flex-1 ml-16 md:ml-0 ${
+                      index % 2 === 0 ? "md:pr-8" : "md:pl-8"
+                    }`}
+                  >
+                    <Card className="hover:shadow-md transition-shadow duration-300">
+                      <CardContent className="pt-6">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge variant="outline">{item.year}</Badge>
+                        </div>
+                        <h3 className="text-lg font-semibold mb-1">
+                          {item.title}
+                        </h3>
+                        <p className="text-primary font-medium mb-2">
+                          {item.company}
+                        </p>
+                        <p className="text-muted-foreground text-sm">
+                          {item.description}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
       </div>
     </div>
   );
